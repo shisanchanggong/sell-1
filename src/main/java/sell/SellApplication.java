@@ -1,4 +1,4 @@
-package com.totalo.sell;
+package sell;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
