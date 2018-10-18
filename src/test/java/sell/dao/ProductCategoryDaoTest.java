@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import sell.mapper.ProductCategory;
+import sell.mapping.ProductCategoryMapping;
 
 
 @RunWith(SpringRunner.class)
@@ -17,13 +17,13 @@ public class ProductCategoryDaoTest {
 
     @Test
     public void findOneTest(){
-        ProductCategory productCategory = productCategoryDao.findOne(1);
+        ProductCategoryMapping productCategory = productCategoryDao.findOne(1);
         System.out.println(productCategory.toString());
     }
 
     @Test
     public void saveTest(){
-        ProductCategory productCategory = new ProductCategory();
+        ProductCategoryMapping productCategory = new ProductCategoryMapping();
         productCategory.setCategoryName("测试");
         productCategory.setCategoryType(3);
         productCategoryDao.save(productCategory);

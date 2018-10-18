@@ -1,4 +1,4 @@
-package sell.mapper;
+package sell.mapping;
 
 import org.springframework.data.annotation.Id;
 
@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
  * @author totalo
  */
 @Entity
-public class ProductCategory {
+public class ProductCategoryMapping {
 
     /**类目id*/
     @Id
@@ -50,7 +50,7 @@ public class ProductCategory {
 
     @Override
     public String toString() {
-        return "ProductCategory{" +
+        return "ProductCategoryMapping{" +
                 "categoryId=" + categoryId +
                 ", categoryName='" + categoryName + '\'' +
                 ", categoryType=" + categoryType +
