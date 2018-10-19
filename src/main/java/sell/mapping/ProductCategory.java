@@ -1,17 +1,28 @@
 package sell.mapping;
 
-import org.springframework.data.annotation.Id;
+import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import java.io.Serializable;
+import java.util.Date;
+
 
 /**
  * product_category
  * 商品类目表
  * @author totalo
+ * @Entity 实体类
+ * @DynamicUpdate 动态更新
+ * @Data getset方法插件
  */
 @Entity
-public class ProductCategoryMapping {
+@DynamicUpdate
+@Data
+public class ProductCategory {
 
     /**类目id*/
     @Id
@@ -24,27 +35,11 @@ public class ProductCategoryMapping {
     /**类目编号*/
     private Integer categoryType;
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public ProductCategory() {
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
+    public ProductCategory(String categoryName, Integer categoryType) {
         this.categoryName = categoryName;
-    }
-
-    public Integer getCategoryType() {
-        return categoryType;
-    }
-
-    public void setCategoryType(Integer categoryType) {
         this.categoryType = categoryType;
     }
 

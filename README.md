@@ -78,7 +78,19 @@ create table `order_detail`(
     key `idx_order_id` (`order_id`)
 ) comment '订单详情表';
 ```
+### 3.项目开发
 
+#### 3.1 插件
+* lombk插件
+* 添加依赖：
+
+<!--getset方法工具-->
+           <dependency>
+               <groupId>org.projectlombok</groupId>
+               <artifactId>lombok</artifactId>
+           </dependency>
+
+    
 
 
 说明：开发项目是学习的一个过程，由此将开发过程中遇到的细节性问题以及，平时掌握不牢固的东西总结至[problem.md](problem.md),为自己提个醒。
