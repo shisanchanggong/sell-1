@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import sell.mapping.ProductInfo;
 import java.math.BigDecimal;
-
+import java.util.List;
 
 
 @RunWith(SpringRunner.class)
@@ -35,5 +35,7 @@ public class ProductInfoDaoTest {
     }
     @Test
     public void findByProductStatus() {
+        List<ProductInfo> list = productInfoDao.findByProductStatus(0);
+        Assert.assertNotEquals(0,list);
     }
 }
