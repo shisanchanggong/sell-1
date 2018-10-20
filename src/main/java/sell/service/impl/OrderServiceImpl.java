@@ -1,10 +1,13 @@
 package sell.service.impl;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import sell.converter.OrderMaster2OrderDTOConverter;
 import sell.dao.OrderDetailDao;
 import sell.dao.OrderMasterDao;
 import sell.dto.CartDTO;
@@ -32,7 +35,7 @@ import java.util.stream.Collectors;
  * 从数据中查询
  */
 @Service
-public class OrderServiceImpl  implements OrderService {
+public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ProductService productService;
@@ -91,11 +94,27 @@ public class OrderServiceImpl  implements OrderService {
 
     @Override
     public OrderDTO findOne(String orderId) {
-        return null;
+        OrderMaster orderMaster = orderMasterDao.findOne(orderId);
+        if(orderMaster == null){
+            throw new SellException(ResultEnum.ORDER_NOT_EXIST);
+        }
+        List<OrderDetail> orderDetailList = orderDetailDao.findByOrderId(orderId);
+        if(CollectionUtils.isEmpty(orderDetailList)){
+            throw new SellException(ResultEnum.ORDER_DETAIL_NOT_EXIST);
+        }
+        OrderDTO orderDTO = new OrderDTO();
+        BeanUtils.copyProperties(orderMaster,orderDTO);
+        orderDTO.setOrderDetailList(orderDetailList);
+        return orderDTO;
     }
 
     @Override
     public Page<OrderDTO> findList(String buyerOpenid, Pageable pageable) {
+        Page<OrderMaster> orderMasterPage = orderMasterDao.findByBuyerOpenid(buyerOpenid,pageable);
+
+        List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
+
+        //
         return null;
     }
 

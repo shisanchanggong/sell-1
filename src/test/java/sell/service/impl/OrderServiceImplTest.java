@@ -24,6 +24,7 @@ public class OrderServiceImplTest {
     private OrderServiceImpl orderService;
 
     private final static String OPENID = "1101223";
+    private final static String OREDERID = "1540019427796335678";
     @Test
     public void create() {
         OrderDTO orderDTO = new OrderDTO();
@@ -46,6 +47,9 @@ public class OrderServiceImplTest {
 
     @Test
     public void findOne() {
+        OrderDTO result = orderService.findOne(OREDERID);
+        log.info("【查询单个订单】result={}",result);
+        Assert.assertNotNull(result);
     }
 
     @Test
