@@ -1,8 +1,10 @@
 package sell.mapping;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
@@ -10,6 +12,7 @@ import java.math.BigDecimal;
  * @author totalo
  */
 @Entity
+@DynamicUpdate
 @Data
 public class ProductInfo {
 
@@ -50,6 +53,7 @@ public class ProductInfo {
         this.productStatus = productStatus;
         this.categoryType = categoryType;
     }
+
 
     @Override
     public String toString() {

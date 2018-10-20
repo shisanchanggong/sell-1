@@ -1,5 +1,5 @@
 -- 商品表
-create table `product_indo`(
+create table `product_info`(
     `product_id` varchar (32) not null,
     `product_name` varchar (64) not null comment '商品名称',
     `product_price` decimal(8,2) not null  comment '单价',

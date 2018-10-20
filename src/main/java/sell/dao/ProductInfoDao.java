@@ -9,7 +9,7 @@ import java.util.List;
  * @author totalo
  * 商品dao
  */
-public interface ProductInfoDao extends JpaRepository<ProductInfoDao,String> {
+public interface ProductInfoDao extends JpaRepository<ProductInfo,String> {
 
     List<ProductInfo> findByProductStatus(Integer productStatus);
 }
