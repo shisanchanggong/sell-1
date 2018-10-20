@@ -29,7 +29,7 @@ public class ProductInfo {
     private Integer productStock;
 
     /**商品描述*/
-    private String description;
+    private String productDescription;
 
     /**商品小图*/
     private String productIcon;
@@ -48,7 +48,7 @@ public class ProductInfo {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productStock = productStock;
-        this.description = description;
+        this.productDescription = description;
         this.productIcon = productIcon;
         this.productStatus = productStatus;
         this.categoryType = categoryType;
@@ -62,7 +62,7 @@ public class ProductInfo {
                 ", productName='" + productName + '\'' +
                 ", productPrice=" + productPrice +
                 ", productStock=" + productStock +
-                ", description='" + description + '\'' +
+                ", description='" + productDescription + '\'' +
                 ", productIcon='" + productIcon + '\'' +
                 ", productStatus=" + productStatus +
                 ", categoryType=" + categoryType +

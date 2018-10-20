@@ -17,6 +17,7 @@ create table `product_info`(
     `product_price` decimal(8,2) not null  comment '单价',
     `product_stock` int not null comment '库存',
     `product_description` varchar (64) comment '描述',
+    `product_status` tinyint(3) default '0' comment '状态,0正常1下架',
     `product_icon` varchar (512) comment '小图',
     `category_type` int not null comment '类目编号',
     `create_time` timestamp  not null default current_timestamp  comment '创建时间',
