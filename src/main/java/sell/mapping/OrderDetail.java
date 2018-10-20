@@ -8,12 +8,14 @@ import java.math.BigDecimal;
 
 /**
  * 订单详情页面
+ * @author totalo
  */
 @Entity
 @Data
 public class OrderDetail {
 
     /**详情id*/
+    @Id
     private String detailId;
 
     /**订单id*/
