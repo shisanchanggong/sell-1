@@ -80,7 +80,8 @@ create table `order_detail`(
 ) comment '订单详情表';
 ```
 ### 3.项目开发
-
+* 开发思路：尽量得抽离
+* 流程：pojo->dao->单元测试->service->单元测试->controller
 #### 3.1 插件
 * lombk插件
 * 添加依赖：
@@ -90,6 +91,10 @@ create table `order_detail`(
                <groupId>org.projectlombok</groupId>
                <artifactId>lombok</artifactId>
            </dependency>
+          
+          
+* Chrome开发插件JsonView可以将Json数据格式化
+* 效果展示：![jsonView](image_stroe/jsonView.png)
 
     
 
