@@ -25,7 +25,7 @@ create table `product_category`(
 ) comment '类目表';
 
 -- 订单表
-create table `oeder_master`(
+create table `order_master`(
     `order_id` varchar (32) not null,
     `buyer_name` varchar (32) not null comment '买家名字',
     `buyer_phone` varchar (32) not null comment '买家电话',
