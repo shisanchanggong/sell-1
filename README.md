@@ -87,7 +87,7 @@ create table `order_detail`(
 
 * 项目结构：
 
-  ```xml
+  ```latex
   |--sell
      |--image_store
      |--src
@@ -100,7 +100,7 @@ create table `order_detail`(
      |		   |--dto
      |		   |--enums
      |		   |--exception
-     |		   |--form
+     |               |--form
      |		   |--mapping
      |		   |--service
      |		   |--utils

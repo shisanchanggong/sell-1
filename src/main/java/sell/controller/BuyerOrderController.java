@@ -115,7 +115,7 @@ public class BuyerOrderController {
     @PostMapping("/cancel")
     public ResultVO cancel(@RequestParam("openid")String openid,
                            @RequestParam("orderId")String orderId) {
-        
+
 
         buyerService.cancelOrder(openid, orderId);
 
