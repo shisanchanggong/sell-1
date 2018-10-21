@@ -1,5 +1,6 @@
 package sell.service;
 
+import com.lly835.bestpay.model.PayResponse;
 import sell.dto.OrderDTO;
 
 /**
@@ -7,5 +8,5 @@ import sell.dto.OrderDTO;
  */
 public interface PayService {
 
-    void create(OrderDTO orderDTO);
+    PayResponse create(OrderDTO orderDTO);
 }

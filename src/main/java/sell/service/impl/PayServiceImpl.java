@@ -5,16 +5,18 @@ import com.lly835.bestpay.model.PayRequest;
 import com.lly835.bestpay.model.PayResponse;
 import com.lly835.bestpay.service.impl.BestPayServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import sell.dto.OrderDTO;
 import sell.service.PayService;
 
+@Service
 public class PayServiceImpl implements PayService {
 
     @Autowired
     private BestPayServiceImpl bestPayService;
 
     @Override
-    public void create(OrderDTO orderDTO) {
+    public PayResponse create(OrderDTO orderDTO) {
         //支付请求
         PayRequest payRequest = new PayRequest();
         payRequest.setOpenid(orderDTO.getBuyerOpenid());
@@ -24,5 +26,6 @@ public class PayServiceImpl implements PayService {
         //利用枚举类，灵活使用支付Api
         payRequest.setPayTypeEnum(BestPayTypeEnum.WXPAY_H5);
         PayResponse payResponse = bestPayService.pay(payRequest);
+        return payResponse;
     }
 }

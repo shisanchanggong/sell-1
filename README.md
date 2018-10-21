@@ -156,9 +156,17 @@ create table `order_detail`(
     <version>1.1.0</version>
 </dependency>
 ```
+* 模板引擎
+```xml
+<dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-freemarker</artifactId>
+</dependency>
+```
 
 * Chrome开发插件JsonView可以将Json数据格式化
 * 效果展示：
+
 ![jsonView](image_store/jsonView.png)
 
     
