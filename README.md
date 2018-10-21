@@ -79,22 +79,59 @@ create table `order_detail`(
     key `idx_order_id` (`order_id`)
 ) comment '订单详情表';
 ```
+
 ### 3.项目开发
 * 开发思路：尽量得抽离
+
 * 流程：pojo->dao->单元测试->service->单元测试->controller
+
+* 项目结构：
+
+  ```latex
+  |--sell
+     |--image_store
+     |--src
+     |  |--main
+     |     |--java
+     |	 	|--sell
+     |		   |--controller
+     |		   |--converter
+     |		   |--dao
+     |		   |--dto
+     |		   |--enums
+     |		   |--exception
+     |		   |--mapping
+     |		   |--service
+     |           |--utils
+     |           |--VO
+     |		|--SellApplication
+     |     |--resources
+     |		|--static
+     |		|--templates
+     |		|--application.yml
+     |  |--test
+     |--pom.xml
+     |--sell.sql	
+  ```
+
+
+
+
 #### 3.1 插件
 * lombk插件
 * 添加依赖：
 
+```xml
 <!--getset方法工具-->
-           <dependency>
-               <groupId>org.projectlombok</groupId>
-               <artifactId>lombok</artifactId>
-           </dependency>
-          
-          
+<dependency>
+	<groupId>org.projectlombok</groupId>
+	<artifactId>lombok</artifactId>
+</dependency>                  
+```
+
 * Chrome开发插件JsonView可以将Json数据格式化
-* 效果展示：![jsonView](image_stroe/jsonView.png)
+* 效果展示：
+![jsonView](image_store/jsonView.png)
 
     
 
