@@ -25,7 +25,9 @@ public enum ResultEnum {
 
     CART_EMPTY(17,"购物车不能为空"),
 
-    ORDER_OWN_ERROR(18,"订单匹配异常")
+    ORDER_OWN_ERROR(18,"订单匹配异常"),
+
+    WECHAT_MP_ERROR(19,"公众号授权异常")
     ;
 
     private Integer code;

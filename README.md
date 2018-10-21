@@ -138,6 +138,15 @@ create table `order_detail`(
     <artifactId>gson</artifactId>
 </dependency>
 ```
+* wechat SDK
+```xml
+<!--wechat -->
+<dependency>
+    <groupId>com.github.binarywang</groupId>
+    <artifactId>weixin-java-mp</artifactId>
+    <version>3.2.0</version>
+</dependency>
+```
 
 * Chrome开发插件JsonView可以将Json数据格式化
 * 效果展示：
