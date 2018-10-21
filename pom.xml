@@ -61,6 +61,12 @@
             <artifactId>weixin-java-mp</artifactId>
             <version>3.2.0</version>
         </dependency>
+        <!--支付Sdk-->
+        <dependency>
+            <groupId>cn.springboot</groupId>
+            <artifactId>best-pay-sdk</artifactId>
+            <version>1.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

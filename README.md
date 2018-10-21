@@ -147,6 +147,15 @@ create table `order_detail`(
     <version>3.2.0</version>
 </dependency>
 ```
+* pay sdk
+```xml
+<!--支付Sdk-->
+<dependency>
+    <groupId>cn.springboot</groupId>
+    <artifactId>best-pay-sdk</artifactId>
+    <version>1.1.0</version>
+</dependency>
+```
 
 * Chrome开发插件JsonView可以将Json数据格式化
 * 效果展示：
