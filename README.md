@@ -102,9 +102,9 @@ create table `order_detail`(
      |		   |--exception
      |		   |--mapping
      |		   |--service
-     |           |--utils
-     |           |--VO
-     |		|--SellApplication
+     |		   |--utils
+     |		   |--VO
+     |	       |--SellApplication
      |     |--resources
      |		|--static
      |		|--templates
