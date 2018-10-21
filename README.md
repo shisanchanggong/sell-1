@@ -100,6 +100,7 @@ create table `order_detail`(
      |		   |--dto
      |		   |--enums
      |		   |--exception
+     |         |--form
      |		   |--mapping
      |		   |--service
      |		   |--utils
@@ -127,6 +128,15 @@ create table `order_detail`(
 	<groupId>org.projectlombok</groupId>
 	<artifactId>lombok</artifactId>
 </dependency>                  
+```
+
+* json处理
+```xml
+<!--json处理-->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+</dependency>
 ```
 
 * Chrome开发插件JsonView可以将Json数据格式化
