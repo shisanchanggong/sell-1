@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 import sell.dto.OrderDTO;
+import sell.enums.OrderStatusEnum;
 import sell.mapping.OrderDetail;
 
 import java.util.ArrayList;
@@ -63,6 +64,9 @@ public class OrderServiceImplTest {
 
     @Test
     public void cancel() {
+        OrderDTO orderDTO = orderService.findOne(OREDERID);
+        OrderDTO result = orderService.cancel(orderDTO);
+        Assert.assertNotEquals(OrderStatusEnum.NEW.getCode(),result.getOrderStatus());
     }
 
     @Test
