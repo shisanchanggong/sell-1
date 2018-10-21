@@ -87,4 +87,19 @@ public class BuyerOrderController {
         return ResultVOUtil.success(orderDTOPage.getContent());
 
     }
+
+    /**
+     * 获取订单详情
+     * @param openid
+     * @param orderId
+     * @return
+     */
+    @GetMapping("/detail")
+    public ResultVO<OrderDTO> getDetail(@RequestParam("openid")String openid,
+                                        @RequestParam("orderId")String orderId) {
+        //TODO 不安全需要该进
+
+        OrderDTO orderDTO = orderService.findOne(orderId);
+        return ResultVOUtil.success(orderDTO);
+    }
 }
