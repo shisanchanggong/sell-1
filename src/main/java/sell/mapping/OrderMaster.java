@@ -1,6 +1,7 @@
 package sell.mapping;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import sell.enums.OrderStatusEnum;
 import sell.enums.PayStatusEnum;
@@ -9,15 +10,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 /**
  * 订单
  * @author totalo
  */
 @Entity
-@DynamicUpdate
 @Data
+@DynamicUpdate
+@DynamicInsert
 public class OrderMaster {
 
     /**订单Id*/
