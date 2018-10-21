@@ -102,8 +102,8 @@ create table `order_detail`(
      |		   |--exception
      |		   |--mapping
      |		   |--service
-     |             |--utils
-     |             |--VO
+     |		   |--utils
+     |		   |--VO
      |	       |--SellApplication
      |     |--resources
      |		|--static
