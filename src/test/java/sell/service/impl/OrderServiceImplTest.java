@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 import sell.dto.OrderDTO;
 import sell.enums.OrderStatusEnum;
+import sell.enums.PayStatusEnum;
 import sell.mapping.OrderDetail;
 
 import java.util.ArrayList;
@@ -78,5 +79,8 @@ public class OrderServiceImplTest {
 
     @Test
     public void paid() {
+        OrderDTO orderDTO = orderService.findOne(OREDERID);
+        OrderDTO result = orderService.paid(orderDTO);
+        Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(),result.getPayStatus());
     }
 }

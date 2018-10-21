@@ -154,7 +154,13 @@ public class OrderServiceImpl implements OrderService {
         return orderDTO;
     }
 
+    /***
+     * service相互调用  为保持一致性，需要进行事务管理
+     * @param orderDTO
+     * @return
+     */
     @Override
+    @Transactional
     public OrderDTO finish(OrderDTO orderDTO) {
         //判断订单状态
         if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
@@ -170,9 +176,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public OrderDTO paid(OrderDTO orderDTO) {
         //判断订单状态
-        if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW)) {
+        if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW.getCode())) {
             log.error("【订单支付】订单状态异常");
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
         }
@@ -180,6 +187,17 @@ public class OrderServiceImpl implements OrderService {
         if (!orderDTO.getPayStatus().equals(PayStatusEnum.WAIT.getCode())) {
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
         }
-        return null;
+        //修改支付的状态
+        orderDTO.setPayStatus(PayStatusEnum.SUCCESS.getCode());
+        OrderMaster orderMaster = new OrderMaster();
+        log.info("orderDTO{}",orderDTO);
+        BeanUtils.copyProperties(orderDTO,orderMaster);
+        log.info("社么{}",orderMaster);
+        OrderMaster updateResult = orderMasterDao.save(orderMaster);
+        if (updateResult == null) {
+            log.error("【支付订单】支付失败，订单状态更新失败{}",orderMaster);
+            throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
+        }
+        return orderDTO;
     }
 }
