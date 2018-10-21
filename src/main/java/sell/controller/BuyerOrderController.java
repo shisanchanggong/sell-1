@@ -16,6 +16,7 @@ import sell.dto.OrderDTO;
 import sell.enums.ResultEnum;
 import sell.exception.SellException;
 import sell.form.OrderForm;
+import sell.service.BuyerService;
 import sell.service.OrderService;
 import sell.utils.ResultVOUtil;
 import sun.rmi.runtime.Log;
@@ -36,6 +37,9 @@ public class BuyerOrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private BuyerService buyerService;
 
     /**
      * 创建订单
@@ -97,9 +101,24 @@ public class BuyerOrderController {
     @GetMapping("/detail")
     public ResultVO<OrderDTO> getDetail(@RequestParam("openid")String openid,
                                         @RequestParam("orderId")String orderId) {
-        //TODO 不安全需要该进
 
-        OrderDTO orderDTO = orderService.findOne(orderId);
+        OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
         return ResultVOUtil.success(orderDTO);
+    }
+
+    /**
+     * 取消订单
+     * @param openid
+     * @param orderId
+     * @return
+     */
+    @PostMapping("/cancel")
+    public ResultVO cancel(@RequestParam("openid")String openid,
+                           @RequestParam("orderId")String orderId) {
+        
+
+        buyerService.cancelOrder(openid, orderId);
+
+        return ResultVOUtil.success();
     }
 }

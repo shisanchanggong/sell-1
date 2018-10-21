@@ -23,7 +23,9 @@ public enum ResultEnum {
 
     ORDER_DERAIL_EMPTY(16,"订单详情为空"),
 
-    CART_EMPTY(17,"购物车不能为空")
+    CART_EMPTY(17,"购物车不能为空"),
+
+    ORDER_OWN_ERROR(18,"订单匹配异常")
     ;
 
     private Integer code;
