@@ -22,6 +22,7 @@ import sell.mapping.OrderDetail;
 import sell.mapping.OrderMaster;
 import sell.mapping.ProductInfo;
 import sell.service.OrderService;
+import sell.service.PayService;
 import sell.service.ProductService;
 import sell.utils.KeyUtil;
 
@@ -48,6 +49,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderMasterDao orderMasterDao;
+
+    @Autowired
+    private PayService payService;
 
     @Override
     @Transactional
@@ -117,7 +121,7 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
 
-        return new PageImpl<OrderDTO>(orderDTOList,pageable,orderMasterPage.getTotalElements());
+        return new PageImpl<>(orderDTOList,pageable,orderMasterPage.getTotalElements());
 
     }
 
@@ -149,7 +153,7 @@ public class OrderServiceImpl implements OrderService {
         productService.increaseStock(cartDTOList);
         //若已支付 ，退款
         if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())) {
-            //TODO
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }

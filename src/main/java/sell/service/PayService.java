@@ -1,10 +1,12 @@
 package sell.service;
 
 import com.lly835.bestpay.model.PayResponse;
+import com.lly835.bestpay.model.RefundResponse;
 import sell.dto.OrderDTO;
 
 /**
  * 支付接口
+ * @author totalo
  */
 public interface PayService {
 
@@ -21,4 +23,10 @@ public interface PayService {
      * @return
      */
     PayResponse notify(String notifyData);
+
+    /**
+     * 微信退款
+     * @param orderDTO
+     */
+    RefundResponse refund(OrderDTO orderDTO);
 }

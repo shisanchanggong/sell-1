@@ -54,7 +54,7 @@ public class PayController {
 
         payService.notify(notifyData);
 
-        //返回微信处理结果
+        //返回微信处理结果，并告知微信 订单完结不再接受异步通知
         return new ModelAndView("pay/success");
     }
 }
