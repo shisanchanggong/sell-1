@@ -1,11 +1,13 @@
 package sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import sell.enums.OrderStatusEnum;
 import sell.enums.PayStatusEnum;
 import sell.mapping.OrderDetail;
+import sell.utils.EnumUtil;
 import sell.utils.serializer.Date2LongSerializer;
 
 import java.math.BigDecimal;
@@ -52,4 +54,17 @@ public class OrderDTO {
 
     /**订单详情*/
     List<OrderDetail> orderDetailList;
+
+    /**返回订单枚举类@JsonIgnore Json序列化的时候忽略*/
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum(){
+       return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    /**返回订单状态*/
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
+    }
+
 }

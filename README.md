@@ -163,6 +163,9 @@ create table `order_detail`(
    <artifactId>spring-boot-starter-freemarker</artifactId>
 </dependency>
 ```
+* 后台管理系统
+
+基于BootStrap，get到一个偷懒大法，基于bootstrap拖拽布局，直接生成代码，哈哈哈，见网址![http://www.ibootstrap.cn/](http://www.ibootstrap.cn/)，
 
 * Chrome开发插件JsonView可以将Json数据格式化
 * 效果展示：
