@@ -30,7 +30,9 @@ public enum ResultEnum {
 
     ORDER_OWN_ERROR(18,"订单匹配异常"),
 
-    WECHAT_MP_ERROR(19,"公众号授权异常")
+    WECHAT_MP_ERROR(19,"公众号授权异常"),
+
+    PRODUCT_STATUS_ERROR(20,"商品状态异常")
     ;
 
     private Integer code;
