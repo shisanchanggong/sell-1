@@ -48,12 +48,68 @@ public class SellOrderController {
         return new ModelAndView("order/list",map);
     }
 
+    /**
+     * 取消订单
+     * @param orderId
+     * @param map
+     * @return
+     */
     @GetMapping("/cancel")
     public ModelAndView cancel(@RequestParam("orderId")String orderId,
                                Map<String, Object> map) {
         try {
             OrderDTO orderDTO = orderService.findOne(orderId);
             orderService.cancel(orderDTO);
+        }catch (SellException e){
+            log.info("【卖家订单】订单不存在");
+            map.put("msg", e.getMessage());
+            map.put("url","/sell/seller/order/list");
+
+            return new ModelAndView("common/error",map);
+        }
+        map.put("msg", ResultEnum.SUCCESS);
+        map.put("url","/sell/seller/order/list");
+
+        return new ModelAndView("common/success",map);
+    }
+
+    /**
+     * 订单详情页面
+     * @param orderId
+     * @param map
+     * @return
+     */
+    @GetMapping("/detail")
+    public ModelAndView detail(@RequestParam("orderId") String orderId,
+                               Map<String, Object> map) {
+        OrderDTO orderDTO;
+        try {
+            orderDTO = orderService.findOne(orderId);
+        }catch (SellException e){
+            log.info("【卖家订单】订单不存在");
+            map.put("msg", e.getMessage());
+            map.put("url","/sell/seller/order/list");
+
+            return new ModelAndView("common/error",map);
+        }
+
+        map.put("orderDTO",orderDTO);
+
+        return new ModelAndView("order/detail",map);
+    }
+
+    /**
+     * 完结订单
+     * @param orderId
+     * @param map
+     * @return
+     */
+    @GetMapping("/finish")
+    public ModelAndView finish(@RequestParam("orderId")String orderId,
+                               Map<String, Object> map) {
+        try {
+            OrderDTO orderDTO = orderService.findOne(orderId);
+            orderService.finish(orderDTO);
         }catch (SellException e){
             log.info("【卖家订单】订单不存在");
             map.put("msg", e.getMessage());
