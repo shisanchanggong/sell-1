@@ -19,6 +19,7 @@ import sell.mapping.ProductCategory;
 import sell.mapping.ProductInfo;
 import sell.service.CategoryService;
 import sell.service.ProductService;
+import sell.utils.KeyUtil;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -130,17 +131,22 @@ public class SellerProductController {
     public ModelAndView save(@Valid ProductForm productForm,
                              BindingResult bindingResult,
                              Map<String, Object> map) {
+        ProductInfo productInfo = new ProductInfo();
         if (bindingResult.hasErrors()) {
             map.put("msg",bindingResult.getFieldError().getDefaultMessage());
             map.put("url","/sell/seller/product/list");
 
             return new ModelAndView("/common/error",map);
         }
-
-        ProductInfo productInfo = productService.findOne(productForm.getProductId());
-        BeanUtils.copyProperties(productForm,productInfo);
-
         try {
+            //新增
+            if (!StringUtils.isEmpty(productForm.getProductId())) {
+                productInfo = productService.findOne(productForm.getProductId());
+
+            }else {
+                productForm.setProductId(KeyUtil.genUniqueKey());
+            }
+            BeanUtils.copyProperties(productForm,productInfo);
             productService.save(productInfo);
         }catch (SellException e){
             map.put("msg",e.getMessage());
