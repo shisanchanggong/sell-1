@@ -11,6 +11,12 @@ import sell.mapping.OrderMaster;
  */
 public interface OrderMasterDao extends JpaRepository<OrderMaster,String> {
 
+    /**
+     * 通过用户参数查询用户订单列表
+     * @param buyerOpenid
+     * @param pageable
+     * @return
+     */
     Page<OrderMaster> findByBuyerOpenid(String buyerOpenid, Pageable pageable);
 
 }

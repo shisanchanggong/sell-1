@@ -63,12 +63,12 @@ public class SellerOrderController {
         }catch (SellException e){
             log.info("【卖家订单】订单不存在");
             map.put("msg", e.getMessage());
-            map.put("url","/sell/seller/order/list");
+            map.put("url","/sell/seller/order/list.ftl");
 
             return new ModelAndView("common/error",map);
         }
         map.put("msg", ResultEnum.SUCCESS);
-        map.put("url","/sell/seller/order/list");
+        map.put("url","/sell/seller/order/list.ftl");
 
         return new ModelAndView("common/success",map);
     }
@@ -88,7 +88,7 @@ public class SellerOrderController {
         }catch (SellException e){
             log.info("【卖家订单】订单不存在");
             map.put("msg", e.getMessage());
-            map.put("url","/sell/seller/order/list");
+            map.put("url","/sell/seller/order/list.ftl");
 
             return new ModelAndView("common/error",map);
         }
@@ -113,12 +113,12 @@ public class SellerOrderController {
         }catch (SellException e){
             log.info("【卖家订单】订单不存在");
             map.put("msg", e.getMessage());
-            map.put("url","/sell/seller/order/list");
+            map.put("url","/sell/seller/order/list.ftl");
 
             return new ModelAndView("common/error",map);
         }
         map.put("msg", ResultEnum.SUCCESS);
-        map.put("url","/sell/seller/order/list");
+        map.put("url","/sell/seller/order/list.ftl");
 
         return new ModelAndView("common/success",map);
     }

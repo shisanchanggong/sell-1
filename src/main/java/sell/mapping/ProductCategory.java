@@ -1,6 +1,7 @@
 package sell.mapping;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ import java.util.Date;
  */
 @Entity
 @DynamicUpdate
+@DynamicInsert
 @Data
 public class ProductCategory {
 
@@ -35,20 +37,9 @@ public class ProductCategory {
     /**类目编号*/
     private Integer categoryType;
 
-    public ProductCategory() {
-    }
+    /**创建时间*/
+    private Date createTime;
 
-    public ProductCategory(String categoryName, Integer categoryType) {
-        this.categoryName = categoryName;
-        this.categoryType = categoryType;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductCategoryMapping{" +
-                "categoryId=" + categoryId +
-                ", categoryName='" + categoryName + '\'' +
-                ", categoryType=" + categoryType +
-                '}';
-    }
+    /**更新时间*/
+    private Date updateTime;
 }

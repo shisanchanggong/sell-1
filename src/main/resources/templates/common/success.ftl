@@ -11,7 +11,7 @@
             <div class="alert alert-dismissable alert-success">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4>
-                ${msg!''}
+                ${msg!""}
                 </h4> <a href="${url}" class="alert-class" >3s后自动跳转</a>
             </div>
         </div>

@@ -56,17 +56,17 @@
                         </tbody>
                     </table>
                     <ul class="pagination pull-right">
-                        <#if curretPage lte 1>
+                        <#if currentPage lte 1>
                             <li class="disabled">
                                 <a href="#">上一页</a>
                             </li>
                         <#else>
                             <li>
-                                <a href="/sell/seller/order/list?page=${curretPage - 1}&size=${size}">上一页</a>
+                                <a href="/sell/seller/order/list?page=${currentPage - 1}&size=${size}">上一页</a>
                             </li>
                         </#if>
                         <#list 1..productInfoPage.getTotalPages() as index>
-                            <#if curretPage == index>
+                            <#if currentPage == index>
                                 <li class="disabled">
                                     <a href="#">${index}</a>
                                 </li>
@@ -76,13 +76,13 @@
                                 </li>
                             </#if>
                         </#list>
-                        <#if curretPage gte productInfoPage.getTotalPages()>
+                        <#if currentPage gte productInfoPage.getTotalPages()>
                             <li class="disabled">
                                 <a href="#">下一页</a>
                             </li>
                         <#else>
                             <li>
-                                <a href="/sell/seller/order/list?page=${curretPage + 1}&size=${size}">下一页</a>
+                                <a href="/sell/seller/order/list?page=${currentPage + 1}&size=${size}">下一页</a>
                             </li>
                         </#if>
 

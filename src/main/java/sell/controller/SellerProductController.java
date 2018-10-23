@@ -53,7 +53,7 @@ public class SellerProductController {
         PageRequest pageRequest = new PageRequest(page - 1,size);
         Page<ProductInfo> productInfoPage = productService.findAll(pageRequest);
         map.put("productInfoPage",productInfoPage);
-        map.put("curretPage",page);
+        map.put("currentPage",page);
         map.put("size",size);
         return new ModelAndView("product/list",map);
     }
