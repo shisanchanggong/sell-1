@@ -79,6 +79,17 @@ create table `order_detail`(
     key `idx_order_id` (`order_id`)
 ) comment '订单详情表';
 ```
+```sql
+    create table `seller_info`(
+      `seller_id` varchar (32) not null,
+      `username` varchar (32) not null,
+      `password` varchar (32) not null,
+      `openid` varchar (64) no null comment '用户openid',
+      `create_time` timestamp  not null default current_timestamp  comment '创建时间',
+      `update_time` timestamp not null default current_timestamp  on update current_timestamp comment '修改时间',
+      primary key (`seller_id`)
+    ) comment '卖家信息表';
+```
 
 ### 3.项目开发
 * 开发思路：尽量得抽离
