@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * wechatAccount
  * @author totalo
@@ -32,4 +34,6 @@ public class WechatAccountConfig {
 
     /**微信异步通知地址*/
     private String notifyPath;
+
+    private Map<String, String> templateId;
 }

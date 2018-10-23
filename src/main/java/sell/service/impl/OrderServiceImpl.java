@@ -24,6 +24,7 @@ import sell.mapping.ProductInfo;
 import sell.service.OrderService;
 import sell.service.PayService;
 import sell.service.ProductService;
+import sell.service.PushMessageService;
 import sell.utils.KeyUtil;
 
 import javax.transaction.Transactional;
@@ -52,6 +53,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PayService payService;
+
+    @Autowired
+    private PushMessageService pushMessageService;
 
     @Override
     @Transactional
@@ -175,7 +179,11 @@ public class OrderServiceImpl implements OrderService {
         orderDTO.setOrderStatus(OrderStatusEnum.FINISHED.getCode());
         OrderMaster orderMaster = new OrderMaster();
         BeanUtils.copyProperties(orderDTO,orderMaster);
-        orderMasterDao.save(orderMaster);
+        OrderMaster updateResult = orderMasterDao.save(orderMaster);
+        if (updateResult == null) {
+            throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
+        }
+        //微信消息推送
         return orderDTO;
     }
 
@@ -202,6 +210,7 @@ public class OrderServiceImpl implements OrderService {
             log.error("【支付订单】支付失败，订单状态更新失败{}",orderMaster);
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+        pushMessageService.orderStatus(orderDTO);
         return orderDTO;
     }
 

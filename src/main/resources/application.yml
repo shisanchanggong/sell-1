@@ -24,6 +24,8 @@ wechat:
   mchId:
   mchKey:
   KeyPath:
+  templateId:
+    orderStatus:
 
 projectUrl:
   wechatMpAuthorize:
