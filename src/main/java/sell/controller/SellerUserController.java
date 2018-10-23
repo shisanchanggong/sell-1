@@ -16,6 +16,7 @@ import sell.service.SellerService;
 import sell.utils.CookieUtil;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.UUID;
@@ -63,5 +64,21 @@ public class SellerUserController {
         CookieUtil.set(response, CookieConstant.TOKEN,token,expire);
 
         return new ModelAndView("redirect:" + projectUrl.getSell() + "/sell/seller/order/list");
+    }
+
+    @GetMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request,
+                               HttpServletResponse response,
+                               Map<String,Object> map){
+       //cookie查询
+        Cookie cookie = CookieUtil.get(request,CookieConstant.TOKEN);
+        if (cookie != null) {
+            redisTemplate.opsForValue().getOperations().delete(String.format(RedisConstant.TOKEN_PREFIX,cookie.getValue()));
+        }
+       //清除cookie
+        CookieUtil.set(response,CookieConstant.TOKEN,null,0);
+        map.put("msg","成功");
+        map.put("url","/sell/seller/order/list");
+        return  new ModelAndView("/common/success",map);
     }
 }
