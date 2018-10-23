@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import sell.config.ProjectUrl;
 import sell.constant.CookieConstant;
 import sell.constant.RedisConstant;
 import sell.enums.ResultEnum;
@@ -34,6 +35,9 @@ public class SellerUserController {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+    @Autowired
+    private ProjectUrl projectUrl;
+
     /**
      * 卖家登陆
      * @param openid
@@ -58,6 +62,6 @@ public class SellerUserController {
         //设置token至cookie
         CookieUtil.set(response, CookieConstant.TOKEN,token,expire);
 
-        return null;
+        return new ModelAndView("redirect:" + projectUrl.getSell() + "/sell/seller/order/list");
     }
 }
