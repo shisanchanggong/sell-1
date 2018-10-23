@@ -15,6 +15,8 @@ server:
 wechat:
   mpAppId:
   mpAppSecret:
+  openAppId:
+  openAppSecret:
   mchId:
   mchKey:
   KeyPath:

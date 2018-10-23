@@ -84,7 +84,7 @@ create table `order_detail`(
       `seller_id` varchar (32) not null,
       `username` varchar (32) not null,
       `password` varchar (32) not null,
-      `openid` varchar (64) no null comment '用户openid',
+      `openid` varchar (64) not null comment '用户openid',
       `create_time` timestamp  not null default current_timestamp  comment '创建时间',
       `update_time` timestamp not null default current_timestamp  on update current_timestamp comment '修改时间',
       primary key (`seller_id`)
