@@ -9,6 +9,10 @@ spring:
 # 控制返回字段，若为空则不反回
   jackson:
     default-property-inclusion: non_null
+  redis:
+    host: xxx
+    port: 6379
+    password:
 server:
   context-path: /sell
 
@@ -20,3 +24,8 @@ wechat:
   mchId:
   mchKey:
   KeyPath:
+
+projectUrl:
+  wechatMpAuthorize:
+  wechatOpenAuthorize:
+  sell:
