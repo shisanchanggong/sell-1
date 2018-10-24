@@ -189,6 +189,10 @@ GenerateSerialVersion
 ![jsonView](image_store/jsonView.png)
 
     
-
+### 项目部署
+<ol>
+    <li>tomcat服务器</li>
+    <li>jar包的方式：java -jar -Dserver.port=xx sell.jar<li>
+</ol>
 
 说明：开发项目是学习的一个过程，由此将开发过程中遇到的细节性问题以及，平时掌握不牢固的东西总结至[problem.md](problem.md),为自己提个醒。
