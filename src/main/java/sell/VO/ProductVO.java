@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import sell.mapping.ProductInfo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,10 @@ import java.util.List;
  * 创建VO考虑前端所需字段，保障安全性和隐私性
  */
 @Data
-public class ProductVO {
+public class ProductVO implements Serializable {
+
+
+    private static final long serialVersionUID = 5818027651969720012L;
 
     @JsonProperty("name")
     private String categoryName;

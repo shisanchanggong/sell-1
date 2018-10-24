@@ -2,12 +2,17 @@ package sell.VO;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /***
  * http请求返回的最外层对象
  * @author totalo
  */
 @Data
-public class ResultVO<T> {
+public class ResultVO<T> implements Serializable {
+
+
+    private static final long serialVersionUID = 6655718735568549330L;
 
     /**错误码*/
     private Integer code;
