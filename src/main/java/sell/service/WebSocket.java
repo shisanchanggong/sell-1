@@ -46,7 +46,7 @@ public class WebSocket {
             try {
                 webSocket.session.getBasicRemote().sendText(message);
             } catch (IOException e) {
-                e.printStackTrace();
+
             }
         }
     }
